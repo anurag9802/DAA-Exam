@@ -1,0 +1,4 @@
+*.rar
+*.exe
+tempCodeRunnerFile.cpp
+.vscode
