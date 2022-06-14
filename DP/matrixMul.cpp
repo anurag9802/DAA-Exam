@@ -2,9 +2,25 @@
 using namespace std;
 
 
+class test {
+char name=65;
+
+int s[19][19];
+public:
+void printParanthesis(int i,int j,int n){
+    if(i==j){
+        cout<<name++;
+        return;
+    }
+    cout<<"(";
+    printParanthesis(i,s[i][j],n);
+    printParanthesis(s[i][j]+1,j,n);
+    cout<<")";
+}
+
 int matrixMul(int p[],int n) {
     int m[n][n];
-    int s[n][n];
+    // int s[n][n];
 
     for(int i=0;i<n;i++) {
         m[i][i]=0;
@@ -27,8 +43,11 @@ int matrixMul(int p[],int n) {
             m[i][j]=min;
         }
     }
+    printParanthesis(1,n-1,n);
+    cout<<endl;
     return m[1][n-1];
 }
+};
 
 int main() {
     cout<<"Enter size of array : ";
@@ -39,7 +58,9 @@ int main() {
     for(int i=0;i<n;i++)
         cin>>a[i];
     
-    cout<<"Ans : "<<matrixMul(a,n);
+    test ob;
+    cout<<"Ans : "<<ob.matrixMul(a,n)<<endl;
+    
 
     
     

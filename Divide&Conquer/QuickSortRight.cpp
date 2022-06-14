@@ -2,17 +2,33 @@
 using namespace std;
 
 
-int partitionRight(int a[],int low,int high) {
-    int pivot=a[high];
-    int k=low-1;
-    for(int i=low;i<high;i++){
-        if(a[i]<pivot){
-            k++;
-            swap(a[k],a[i]);
-        }            
+int partitionRight(int arr[],int low,int high) {
+    // int pivot=a[high];
+    // int k=low-1;
+    // for(int i=low;i<high;i++){
+    //     if(a[i]<pivot){
+    //         k++;
+    //         swap(a[k],a[i]);
+    //     }            
+    // }
+    // swap(a[high],a[k+1]);
+    // return (k+1);
+
+    int pivot=arr[low];
+    int i=low,j=high+1;
+    while(i<j) {
+        do{
+            i++;
+        }while(i<=j && arr[i]<pivot);
+
+        do{
+            j--;
+        }while(arr[j]>pivot);
+        if(i<j)
+        swap(arr[i],arr[j]);
     }
-    swap(a[high],a[k+1]);
-    return (k+1);
+    swap(arr[low],arr[j]);
+    return j;
    
     
 }
